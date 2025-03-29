@@ -1,12 +1,12 @@
 # Storix
 ### Приложение для инвенторизации складов
 ### Участники
-* [Вернигоров Никита](https://github.com/nvernig) - Аналитик, PM
-* [Неупокоев Дмитрий](https://github.com/NeuDima) - QA, Frontend, Team lead
-* [Шестопалов Никита](https://github.com/Shest0pal0v) - Backend, Al-инженер
-* [Михайлов Никита](https://github.com/nikhaylov) - Backend, Al-инженер
-* [Толпыгин Данил](https://github.com/cspee) - Frontend
-* [Голубева Дарья](https://github.com/djlilith) - Дизайнер
+* [Вернигоров Никита](https://taplink.cc/nikita_vernigorov) - Аналитик, PM
+* [Неупокоев Дмитрий](https://taplink.cc/dmitry_neupokoev) - QA, Frontend, Team lead
+* [Шестопалов Никита](https://taplink.cc/nikita_shestopalov) - Backend, Al-инженер
+* [Михайлов Никита](https://taplink.cc/nikita_mikhaylov) - Backend, Al-инженер
+* [Толпыгин Данил](https://taplink.cc/danil_tolpygin) - Frontend
+* [Голубева Дарья](https://taplink.cc/darya_golubeva) - Дизайнер
 
 ### Ссылки
 * [Jira](https://tpgroop.atlassian.net/jira/software/projects/KSZI/summary)
