@@ -1,5 +1,5 @@
 # Storix
-### Приложение для инвентаризации складов
+### Веб-приложение для инвентаризации и управления складом
 ### Участники
 * [Вернигоров Никита](https://taplink.cc/nikita_vernigorov) - Аналитик, PM
 * [Неупокоев Дмитрий](https://taplink.cc/dmitry_neupokoev) - QA, Frontend, Team lead
