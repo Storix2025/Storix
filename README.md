@@ -27,3 +27,4 @@
 ### Прочее
 * [Пользовательские сценарии в Miro](https://miro.com/app/board/uXjVIZ2A7Mk=/)
 * [Диаграммы](https://github.com/Storix2025/Storix/tree/main/Documentation/diagrams)
+* Схема api ([json](https://github.com/Storix2025/Storix/blob/main/Documentation/%D0%B0pi/openapi3_0.json) / [yaml](https://github.com/Storix2025/Storix/blob/main/Documentation/%D0%B0pi/openapi3_0.yaml))
