@@ -28,3 +28,6 @@
 * [Пользовательские сценарии в Miro](https://miro.com/app/board/uXjVIZ2A7Mk=/)
 * [Диаграммы](https://github.com/Storix2025/Storix/tree/main/Documentation/diagrams)
 * Схема api ([json](https://github.com/Storix2025/Storix/blob/main/Documentation/%D0%B0pi/openapi3_0.json) / [yaml](https://github.com/Storix2025/Storix/blob/main/Documentation/%D0%B0pi/openapi3_0.yaml))
+
+## 1 аттестация
+[Чек-лист](https://github.com/Storix2025/Storix/blob/main/Documentation/%D1%87%D0%B5%D0%BA-%D0%BB%D0%B8%D1%81%D1%82/%D0%92%D0%93%D0%A3-%D0%A2%D0%9F.%20%D0%A7%D0%B5%D0%BA%D0%BB%D0%B8%D1%81%D1%82%201%20%D1%8D%D1%82%D0%B0%D0%BF.pdf)
