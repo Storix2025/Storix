@@ -1,0 +1,378 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Inventory System API",
+    "description": "API для взаимодействия с системой инвентаризации",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/register": {
+      "post": {
+        "summary": "Регистрация нового пользователя",
+        "tags": [
+          "Неавторизованный пользователь"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Пользователь успешно зарегистрирован"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "summary": "Авторизация пользователя",
+        "tags": [
+          "Неавторизованный пользователь"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Успешная авторизация"
+          }
+        }
+      }
+    },
+    "/videos": {
+      "post": {
+        "summary": "Загрузка видео",
+        "tags": [
+          "Рабочий"
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Видео успешно загружено"
+          }
+        }
+      }
+    },
+    "/reports": {
+      "get": {
+        "summary": "Просмотр отчёта",
+        "tags": [
+          "Рабочий"
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Отчёт загружен"
+          }
+        }
+      }
+    },
+    "/inventory-history": {
+      "get": {
+        "summary": "Просмотр истории инвентаризаций",
+        "tags": [
+          "Рабочий",
+          "Администратор"
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "История загружена"
+          }
+        }
+      }
+    },
+    "/admin/change-password": {
+      "post": {
+        "summary": "Смена временного пароля",
+        "tags": [
+          "Администратор"
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "string"
+                  },
+                  "newPassword": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Пароль изменён"
+          }
+        }
+      }
+    },
+    "/admin/warehouses": {
+      "post": {
+        "summary": "Создание склада",
+        "tags": [
+          "Администратор"
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Склад создан"
+          }
+        }
+      },
+      "get": {
+        "summary": "Просмотр списка складов и рабочих",
+        "tags": [
+          "Администратор"
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Список загружен"
+          }
+        }
+      }
+    },
+    "/admin/warehouses/{warehouseId}": {
+      "delete": {
+        "summary": "Удаление склада",
+        "tags": [
+          "Администратор"
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "warehouseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Склад удалён"
+          }
+        }
+      }
+    },
+    "/admin/workers": {
+      "post": {
+        "summary": "Создание аккаунта рабочего",
+        "tags": [
+          "Администратор"
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Аккаунт создан"
+          }
+        }
+      }
+    },
+    "/admin/workers/{workerId}": {
+      "delete": {
+        "summary": "Удаление аккаунта рабочего",
+        "tags": [
+          "Администратор"
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "workerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Аккаунт удалён"
+          }
+        }
+      }
+    },
+    "/sysadmin/companies": {
+      "post": {
+        "summary": "Создание аккаунта компании",
+        "tags": [
+          "Системный администратор"
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Аккаунт компании создан"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Удаление аккаунта компании",
+        "tags": [
+          "Системный администратор"
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Аккаунт компании удалён"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
