@@ -9,7 +9,7 @@
 * [Голубева Дарья](https://taplink.cc/darya_golubeva) - Дизайнер
 
 ### Таск-менеджер
-* [Jira](https://tpgroop.atlassian.net/jira/software/projects/KSZI/summary)  
+[Ссылка на Jira](https://tpgroop.atlassian.net/jira/software/projects/KSZI/summary)  
 Почта: storixxxxx@gmail.com  
 Пароль на jira: 2wsx#EDC4rfv  
 Пароль от почты: 123456789rty$
