@@ -52,7 +52,7 @@ jobs:
       - name: Install coverage tool
         run: python -m pip install coverage
 
-       - name: Run tests with coverage
+      - name: Run tests with coverage
         working-directory: backend/Storix
         run: |
           coverage run --source=. manage.py test accounts.tests inventory.tests --verbosity=2
