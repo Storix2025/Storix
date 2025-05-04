@@ -52,10 +52,12 @@ jobs:
       - name: Install coverage tool
         run: python -m pip install coverage
 
-      - name: Run tests with coverage
+      - name: Run tests with pytest & coverage
         working-directory: backend/Storix
+        env:
+          DJANGO_SETTINGS_MODULE: Storix.settings
         run: |
-          coverage run --source=. manage.py test --verbosity=2
+          coverage run -m pytest
           coverage xml -o coverage.xml
           coverage report
 
