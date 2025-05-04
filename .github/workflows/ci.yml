@@ -43,7 +43,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Configure DATABASE_URL
-        run: echo "DATABASE_URL=postgres://postgres:postgres@localhost:5432/test_db" >> $GITHUB_ENV
+        run: echo "DATABASE_URL=postgres://postgres:postgres@localhost:5432/test_db?sslmode=disable" >> $GITHUB_ENV
       
       - name: Set Django SECRET_KEY and DEBUG
         run: |
