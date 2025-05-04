@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Storix</title>
+  <style>
+    body,html { margin:0; padding:0; height:100%; font-family:Arial,sans-serif; }
+    .app { display:flex; height:100%; }
+    .sidebar { width:240px; background:#1f2937; color:#fff; flex-shrink:0; }
+    .logo { padding:20px; text-align:center; background:#111827; font-size:20px; }
+    nav a { display:block; padding:15px 20px; color:#cbd5e1; text-decoration:none; }
+    nav a.active, nav a:hover { background:#374151; color:#fff; }
+    .content { flex:1; background:#f3f4f6; overflow-y:auto; position:relative; }
+    .header { position:sticky; top:0; background:#fff; padding:20px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #e5e7eb; z-index:10; }
+    .header h1 { margin:0; font-size:24px; }
+    .user { padding:8px 12px; background:#1f2937; color:#fff; border-radius:4px; }
+    .main, .history, .new-inventory { padding:20px; }
+    .hidden { display:none; }
+    .cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:20px; }
+    .card { background:#fff; border-radius:8px; box-shadow:0 1px 4px rgba(0,0,0,0.1); overflow:hidden; }
+    .info { padding:12px; }
+    .date { font-size:12px; color:#6b7280; }
+    .warehouse { font-size:16px; margin:4px 0; color:#111827; }
+    .status { display:inline-block; padding:4px 8px; border-radius:12px; font-size:12px; }
+    .status-ok { background:#d1fae5; color:#065f46; }
+    .status-diff { background:#fee2e2; color:#991b1b; }
+    .new-btn { position:absolute; bottom:30px; right:30px; width:56px; height:56px; background:#3b82f6; color:#fff; border:none; border-radius:50%; font-size:28px; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.2); }
+    .analyze-form { background:#fff; padding:20px; border-radius:8px; max-width:400px; box-shadow:0 1px 4px rgba(0,0,0,0.1); }
+    .analyze-form label { display:block; margin-top:10px; }
+    .analyze-form input, .analyze-form button { width:100%; padding:8px; margin-top:6px; }
+    .analyze-form button { background:#3b82f6; color:#fff; border:none; cursor:pointer; }
+    .history-table { width:100%; border-collapse:collapse; background:#fff; box-shadow:0 1px 4px rgba(0,0,0,0.1); border-radius:8px; overflow:hidden; }
+    .history-table th, .history-table td { padding:12px; border-bottom:1px solid #e5e7eb; text-align:left; }
+    .history-table th { background:#f9fafb; font-weight:600; }
+    .cell-match { color:#065f46; font-weight:600; }
+    .cell-mismatch { color:#991b1b; font-weight:600; }
+    .login-overlay { position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); display:flex; justify-content:center; align-items:center; }
+    .login-card { background:#fff; padding:40px; border-radius:8px; width:300px; box-shadow:0 1px 6px rgba(0,0,0,0.2); }
+    .login-card label { display:block; margin-top:10px; }
+    .login-card input { width:100%; padding:8px; margin-top:6px; }
+    .login-card button { width:100%; padding:10px; margin-top:20px; background:#3b82f6; color:#fff; border:none; cursor:pointer; }
+
+    /* Toast */
+    .toast {
+      position:fixed; bottom:20px; right:20px;
+      background:#fff; padding:16px 20px; border-radius:8px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.2); display:flex; align-items:center; gap:12px; z-index:50;
+    }
+    .toast .icon { width:24px; height:24px; color:#e53e3e; }
+    .toast button { margin-left:auto; background:#3b82f6; color:#fff; border:none; padding:6px 12px; border-radius:4px; cursor:pointer; }
+
+    /* Modal */
+    .modal-backdrop {
+      position:fixed; top:0; left:0; right:0; bottom:0;
+      background:rgba(0,0,0,0.4); display:none; justify-content:center; align-items:center; z-index:100;
+    }
+    .modal { background:#fff; padding:20px; border-radius:8px; width:90%; max-width:800px; max-height:90%; overflow:auto; position:relative; }
+    .modal h2 { margin-top:0; }
+    .modal .close { position:absolute; top:16px; right:16px; font-size:20px; cursor:pointer; }
+    .modal table { width:100%; border-collapse:collapse; margin-top:16px; }
+    .modal th, .modal td { padding:12px; border-bottom:1px solid #e5e7eb; text-align:left; }
+    .modal th { background:#f9fafb; font-weight:600; }
+    .modal .status-ok { background:#d1fae5; color:#065f46; padding:4px 8px; border-radius:12px; }
+    .modal .status-diff { background:#fee2e2; color:#991b1b; padding:4px 8px; border-radius:12px; }
+  </style>
+</head>
+<body>
+<div class="app">
+  <div class="sidebar">
+    <div class="logo">Storix</div>
+    <nav>
+      <a href="#" id="nav-main" class="active">Главная</a>
+      <a href="#" id="nav-history">История</a>
+    </nav>
+  </div>
+  <div class="content">
+    <div class="header">
+      <h1 id="page-title">Последние проверки</h1>
+      <div class="user" id="user-name">Worker</div>
+    </div>
+
+    <!-- Main -->
+    <div class="main">
+      <div class="cards" id="cards-container"></div>
+      <button class="new-btn" id="btn-new">+</button>
+    </div>
+
+    <!-- History -->
+    <div class="history hidden">
+      <h2>История инвентаризаций</h2>
+      <table class="history-table">
+        <thead>
+          <tr>
+            <th>Дата</th>
+            <th>Несоответствий</th>
+            <th>Детали</th>
+          </tr>
+        </thead>
+        <tbody id="history-body"></tbody>
+      </table>
+      <button class="new-btn" id="btn-new-2">+</button>
+    </div>
+
+    <!-- New Inventory -->
+    <div class="new-inventory hidden">
+      <h2>Новая инвентаризация</h2>
+      <form class="analyze-form" id="analyze-form">
+        <label>Видео:<input type="file" id="analysis-video" accept="video/*" required></label>
+        <label>JSON конфиг:<input type="file" id="analysis-config" accept=".json" required></label>
+        <button type="submit">Запустить анализ</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Toast container -->
+<div id="toast-container"></div>
+
+<!-- Modal detail -->
+<div class="modal-backdrop" id="modal-backdrop">
+  <div class="modal">
+    <span class="close" id="modal-close">&times;</span>
+    <h2>Результаты инвентаризации</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID товара</th>
+          <th>Текущее местоположение</th>
+          <th>Ожидаемое местоположение</th>
+          <th>Статус</th>
+        </tr>
+      </thead>
+      <tbody id="modal-body"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Login overlay -->
+<div class="login-overlay" id="login-overlay">
+  <div class="login-card">
+    <h2>Войти в Storix</h2>
+    <form id="login-form">
+      <label>Логин:<input type="text" id="login-username" required></label>
+      <label>Пароль:<input type="password" id="login-password" required></label>
+      <button type="submit">Войти</button>
+    </form>
+    <div id="login-error" class="error"></div>
+  </div>
+</div>
+
+<script>
+(async () => {
+  const baseUrl = window.location.origin + '/api';
+  let token, headers, warehouseName, reports = [];
+
+  const $ = id => document.getElementById(id);
+  const overlay   = $('login-overlay');
+  const navMain   = $('nav-main'), navHist = $('nav-history');
+  const secMain   = document.querySelector('.main'),
+        secHist   = document.querySelector('.history'),
+        secNew    = document.querySelector('.new-inventory');
+  const btnNew  = $('btn-new'), btnNew2 = $('btn-new-2');
+  const cards      = $('cards-container'),
+        histBody   = $('history-body'),
+        userName   = $('user-name'),
+        pageTitle  = $('page-title');
+  const toastContainer = $('toast-container');
+  const modalBackdrop = $('modal-backdrop'),
+        modalBody     = $('modal-body'),
+        modalClose    = $('modal-close');
+
+  // Login
+  $('login-form').onsubmit = async e => {
+    e.preventDefault();
+    $('login-error').innerText = '';
+    const res = await fetch(`${baseUrl}/token/`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: $('login-username').value,
+        password: $('login-password').value
+      })
+    });
+    if (!res.ok) {
+      $('login-error').innerText = 'Неверные данные';
+      return;
+    }
+    token = (await res.json()).access;
+    headers = { 'Authorization': 'Bearer ' + token };
+    overlay.style.display = 'none';
+    await init();
+  };
+
+  // Navigation
+  function show(sec) {
+    [secMain, secHist, secNew].forEach(s => s.classList.add('hidden'));
+    [navMain, navHist].forEach(a => a.classList.remove('active'));
+    if (sec === 'main') {
+      secMain.classList.remove('hidden');
+      navMain.classList.add('active');
+      pageTitle.innerText = 'Последние проверки';
+    }
+    if (sec === 'history') {
+      secHist.classList.remove('hidden');
+      navHist.classList.add('active');
+      pageTitle.innerText = 'История инвентаризаций';
+      renderHistory();
+    }
+    if (sec === 'new') {
+      secNew.classList.remove('hidden');
+      pageTitle.innerText = 'Новая инвентаризация';
+    }
+  }
+  navMain.onclick = e => { e.preventDefault(); show('main'); };
+  navHist.onclick = e => { e.preventDefault(); show('history'); };
+  btnNew.onclick = btnNew2.onclick = () => show('new');
+
+  // Initialize
+  async function init() {
+    const dash = await (await fetch(`${baseUrl}/dashboard/worker/`, { headers })).json();
+    warehouseName = dash.warehouse.name;
+    userName.innerText = warehouseName;
+    reports = await (await fetch(`${baseUrl}/inventory/reports/`, { headers })).json();
+    renderMain();
+    show('main');
+    setupAnalyze();
+  }
+
+  // Render main cards
+  function renderMain() {
+    cards.innerHTML = '';
+    reports
+      .filter(r => r.status === 'done')
+      .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+      .forEach(r => {
+        const d = new Date(r.created_at);
+        const bad   = (r.result.пары || []).filter(e => !e.одновременное_наличие);
+        const count = bad.length;
+        const list  = bad.map(e => `${e.box}:${e.rack}`).join(', ');
+
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <div class="info">
+            <div class="date">${d.toLocaleString('ru')}</div>
+            <div class="warehouse">${warehouseName}</div>
+            <div class="status ${count ? 'status-diff' : 'status-ok'}">
+              ${count ? `Расхождения (${count})` : 'OK'}
+            </div>
+          </div>
+          ${ count
+             ? `<div class="mismatch-detail">
+                  <strong>Несоответствия:</strong> ${list}
+                </div>`
+             : ''
+          }
+        `;
+        cards.append(card);
+      });
+  }
+
+  // Render history table
+  function renderHistory() {
+    histBody.innerHTML = '';
+    reports
+      .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+      .forEach(r => {
+        const d = new Date(r.created_at);
+        const mismatches = (r.result.пары || []).filter(e => !e.одновременное_наличие).length;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${d.toLocaleString('ru')}</td>
+          <td class="${mismatches ? 'cell-mismatch' : 'cell-match'}">${mismatches}</td>
+          <td><button data-id="${r.id}">Показать</button></td>
+        `;
+        tr.querySelector('button').onclick = () => openModal(r.id);
+        histBody.append(tr);
+      });
+  }
+
+  // Toast notification
+  function showToast(count, reportId) {
+    toastContainer.innerHTML = `
+      <div class="toast">
+        <svg class="icon" viewBox="0 0 24 24"><path fill="currentColor"
+          d="M11,15H13V17H11V15M12,2A10,10 0 1,0 22,12A10,
+          10 0 0,0 12,2Z"/></svg>
+        Обнаружено ${count} расхождений
+        <button id="toast-show">Показать</button>
+      </div>
+    `;
+    $('toast-show').onclick = () => {
+      openModal(reportId);
+      toastContainer.innerHTML = '';
+    };
+  }
+
+  // Open modal with details
+  async function openModal(id) {
+    const r = await (await fetch(`${baseUrl}/inventory/reports/${id}/`, { headers })).json();
+    modalBody.innerHTML = (r.result.пары || []).map(p => `
+      <tr>
+        <td>${p.box}</td>
+        <td>${p.current_location ?? '—'}</td>
+        <td>${p.rack}</td>
+        <td>
+          <span class="${p.одновременное_наличие ? 'status-ok' : 'status-diff'}">
+            ${p.одновременное_наличие ? 'OK' : 'Расхождение'}
+          </span>
+        </td>
+      </tr>
+    `).join('');
+    modalBackdrop.style.display = 'flex';
+  }
+  modalClose.onclick = () => modalBackdrop.style.display = 'none';
+  modalBackdrop.onclick = e => { if (e.target === modalBackdrop) modalBackdrop.style.display = 'none'; };
+
+  // Analyze form
+  function setupAnalyze() {
+    $('analyze-form').onsubmit = async e => {
+      e.preventDefault();
+      const vidFile = $('analysis-video').files[0];
+      const cfgFile = $('analysis-config').files[0];
+      if (!vidFile || !cfgFile) { alert('Выберите видео и JSON-конфиг'); return; }
+      const cfgText = await cfgFile.text();
+      const fd = new FormData();
+      fd.append('video', vidFile);
+      fd.append('config', cfgText);
+
+      // Create report
+      const res1 = await fetch(`${baseUrl}/inventory/reports/`, {
+        method: 'POST', headers, body: fd
+      });
+      if (!res1.ok) { alert('Ошибка создания'); return; }
+      const created = await res1.json();
+
+      // Run analysis
+      const res2 = await fetch(`${baseUrl}/inventory/reports/${created.id}/run/`, {
+        method: 'POST', headers
+      });
+      if (!res2.ok) { alert('Ошибка анализа'); return; }
+      const done = await res2.json();
+
+      // Show toast + refresh
+      const mismatches = (done.result.пары || []).filter(e => !e.одновременное_наличие).length;
+      showToast(mismatches, done.id);
+      reports = await (await fetch(`${baseUrl}/inventory/reports/`, { headers })).json();
+      renderMain();
+    };
+  }
+
+  // Initial view
+  show('main');
+})();
+</script>
+
+</body>
+</html>
