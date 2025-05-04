@@ -55,7 +55,7 @@ jobs:
       - name: Run tests with coverage
         working-directory: backend/Storix
         run: |
-          coverage run --source=. manage.py test accounts inventory --verbosity=2
+          coverage run --source=. manage.py test --verbosity=2
           coverage xml -o coverage.xml
           coverage report
 
