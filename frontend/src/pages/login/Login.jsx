@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // <-- добавь это
+import { useNavigate } from 'react-router-dom';
 import styles from './Login.module.css';
 import logoIcon from '../../assets/image/logo-icon.png';
 
 const Login = () => {
-  const navigate = useNavigate(); // <-- хук навигации
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     username: '',
@@ -34,15 +34,13 @@ const Login = () => {
         },
         body: JSON.stringify(formData),
       });
-      // console.log('Ответ получен');
       if (response.ok) {
         const data = await response.json();
         setMessage('Успешный вход!');
-        // console.log('Ответ сервера:', data);
         
-        localStorage.setItem('token', data.access); // или data.token, в зависимости от ответа сервера
-        // Переход на другую страницу
-        navigate('/inventarization'); // замените на ваш путь
+        localStorage.setItem('token', data.access);
+      
+        navigate('/inventarization'); 
       } else {
         setMessage('Ошибка входа.');
       }
