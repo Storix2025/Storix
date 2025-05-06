@@ -79,7 +79,6 @@ export default function InventariztionPage() {
       console.log("Успешно отправлено");
 
       if (!created.id) {
-        // console.error("ID отсутствует в ответе");
         return;
       }
 
@@ -88,7 +87,6 @@ export default function InventariztionPage() {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
-        //body: formData,
       });
       const done = await res2.json();
       if (done?.result?.пары) {
@@ -104,7 +102,6 @@ export default function InventariztionPage() {
 
   return (
     <div className="store-container">
-      {/* Синяя боковая панель */}
       <div className="sidebar">
         <div className="sidebar-logo">
           <Logo />
