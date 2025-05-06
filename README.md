@@ -53,9 +53,10 @@
 * Демонстрация MVP - выступление с презентацией ([YouTube](https://youtu.be/u_WH3QBmRPE) / [Rutube](https://rutube.ru/video/92b36944afd46ac5f58f26333e94d28c/))
 * Демонстрация MVP - запись экрана ([YouTube](https://www.youtube.com/watch?v=hBhK7r0iOK0) / [Rutube](https://rutube.ru/video/04e8d949c9ae289e9ab80de76799f609/))
 
-[Чек-лист]()
+[Чек-лист](https://github.com/Storix2025/Storix/blob/main/Documentation/%D1%87%D0%B5%D0%BA-%D0%BB%D0%B8%D1%81%D1%82/%D0%A2%D0%9F.%20%D0%A7%D0%B5%D0%BA%D0%BB%D0%B8%D1%81%D1%82%202%20%D1%8D%D1%82%D0%B0%D0%BF.pdf)
 
 ### Кто нас оценивал
 * 10 группа 4 команда ([Git](https://github.com/LUFFPUFF/TPProduct))
 * 10 группа 3 команда ([Git](https://github.com/git-company-tp10-1/main/tree/main))
 * 9 группа 2 команда ([Git](https://github.com/LatinMapsLives/JourneyGuideApp))
+* 5 группа 3 спец. команда ([Git](https://github.com/LatinMapsLives/JourneyGuideApp))
