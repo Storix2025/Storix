@@ -59,4 +59,4 @@
 * 10 группа 4 команда ([Git](https://github.com/LUFFPUFF/TPProduct))
 * 10 группа 3 команда ([Git](https://github.com/git-company-tp10-1/main/tree/main))
 * 9 группа 2 команда ([Git](https://github.com/LatinMapsLives/JourneyGuideApp))
-* 5 группа 3 спец. команда ([Git](https://github.com/LatinMapsLives/JourneyGuideApp))
+* 5 группа 3 спец. команда ([Git](https://github.com/intrafellow/TechTrackInvest))
