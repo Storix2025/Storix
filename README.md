@@ -3,7 +3,7 @@
 ### Участники
 * [Вернигоров Никита](https://taplink.cc/nikita_vernigorov) - Аналитик, PM
 * [Неупокоев Дмитрий](https://taplink.cc/dmitry_neupokoev) - QA, Frontend, Team lead
-* [Шестопалов Никита](https://taplink.cc/nikita_shestopalov) - Backend, Al-инженер
+* [Шестопалов Никита](https://taplink.cc/nikita_shestopalov) - Backend, Al-инженер, DevOps
 * [Михайлов Никита](https://taplink.cc/nikita_mikhaylov) - Backend, Al-инженер
 * [Толпыгин Данил](https://taplink.cc/danil_tolpygin) - Frontend
 * [Голубева Дарья](https://taplink.cc/darya_golubeva) - Дизайнер
