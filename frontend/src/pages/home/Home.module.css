@@ -1,0 +1,138 @@
+@font-face {
+  font-family: "ADLaMDisplay";
+  src: url("../../assets/fonts/ADLaMDisplay-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.container {
+  height: 100vh;
+  width: 1900px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.background {
+  background: url("../../assets/image/warehouse-background.png") no-repeat
+    center center/cover;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 50px;
+}
+
+.logoBox {
+  display: flex;
+  align-items: center;
+}
+
+.logoBox img {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+}
+
+.logoText {
+  font-size: 50px;
+  font-weight: bold;
+  font-family: "ADLaMDisplay", sans-serif;
+}
+
+.loginBtn {
+  width: 175px;
+  height: 50px;
+  background: transparent;
+  border: 3px solid #60b1f5;
+  color: white;
+  font-size: 30px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.loginBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.main {
+  text-align: center;
+  margin-top: -80px;
+}
+
+.main h1 {
+  font-size: 50px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  font-family: sans-serif;
+}
+
+.subtext {
+  font-size: 30px;
+  margin-bottom: 36px;
+  line-height: 1.4;
+  font-family: sans-serif;
+}
+
+.ctaBtn {
+  width: 490px;
+  height: 100px;
+  background-color: #4da7f5;
+  color: white;
+  font-size: 36px;
+  padding: 12px 28px;
+  margin-bottom: 200px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: sans-serif;
+}
+
+.ctaBtn:hover {
+  background-color: #3490e9;
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  padding-bottom: 60px;
+  flex-wrap: wrap;
+}
+
+.feature {
+  background-color: rgba(131, 147, 151, 0.45);
+  border-radius: 15px;
+  padding: 20px 30px;
+  min-width: 150px;
+  font-size: 16px;
+  width: 320px;
+  height: 237px;
+}
+
+.feature p {
+  font-size: 30px;
+  font-family: sans-serif;
+}
+
+.feature img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.nav {
+ 
+  background-color: red;
+}

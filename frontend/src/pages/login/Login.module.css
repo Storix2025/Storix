@@ -1,0 +1,146 @@
+@font-face {
+  font-family: 'AbhayaLibre';
+  src: url('../../assets/fonts/AbhayaLibre-ExtraBold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ADLaMDisplay';
+  src: url('../../assets/fonts/ADLaMDisplay-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Abel';
+  src: url('../../assets/fonts/Abel-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NotoSans';
+  src: url('../../assets/fonts/NotoSansAdlamUnjoined-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body, html {
+  height: 100%;
+}
+
+.background {
+  background: url('../../assets/image/warehouse-background.png') no-repeat center center/cover;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;     
+  justify-content: center; 
+  overflow: hidden;
+}
+
+.loginBox {
+  position: relative;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  width: 550px;
+  text-align: center;
+}
+
+.inputTitle {
+  font-family: 'NotoSans', sans-serif;
+  font-size: 24px;
+}
+
+.buttonTitle {
+  font-family: 'AbhayaLibre', sans-serif;
+  font-size: 24px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.logo img {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.logo h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #000;
+  font-family: 'ADLaMDisplay';
+}
+
+form input {
+  width: 100%;
+  padding: 12px 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 24px;
+}
+
+form button {
+  width: 100%;
+  background-color: #349ef3;
+  color: white;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #2387d8;
+}
+
+.loginMessage {
+  margin-top: 16px;
+  font-size: 20px;
+  font-family: 'Abel', sans-serif;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.loginSuccess {
+  color: #155724;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+
+.loginError {
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+
+.forgotPassword {
+  display: block;
+  margin-top: 16px;
+  color: #888;
+  font-family: 'Abel', sans-serif;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.forgotPassword:hover {
+  text-decoration: underline;
+}
