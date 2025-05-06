@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'ADLaMDisplay';
-  src: url('../../assets/fonts/ADLaMDisplay-Regular.ttf') format('truetype');
+  font-family: "ADLaMDisplay";
+  src: url("../../assets/fonts/ADLaMDisplay-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -12,16 +12,16 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
 }
 
 .background {
-  background: url('../../assets/image/warehouse-background.png') no-repeat center center/cover;
+  background: url("../../assets/image/warehouse-background.png") no-repeat
+    center center/cover;
   position: relative;
   height: 100vh;
   display: flex;
-  align-items: center;     
-  justify-content: center; 
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
 
@@ -46,7 +46,7 @@
 .logoText {
   font-size: 50px;
   font-weight: bold;
-  font-family: 'ADLaMDisplay', sans-serif;
+  font-family: "ADLaMDisplay", sans-serif;
 }
 
 .loginBtn {
@@ -68,7 +68,6 @@
 .main {
   text-align: center;
   margin-top: -80px;
-
 }
 
 .main h1 {
@@ -110,7 +109,6 @@
   gap: 100px;
   padding-bottom: 60px;
   flex-wrap: wrap;
-
 }
 
 .feature {
@@ -132,4 +130,9 @@
   width: 100px;
   height: 100px;
   margin-bottom: 20px;
+}
+
+.nav {
+ 
+  background-color: red;
 }

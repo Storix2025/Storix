@@ -112,6 +112,26 @@ form button:hover {
   background-color: #2387d8;
 }
 
+.loginMessage {
+  margin-top: 16px;
+  font-size: 20px;
+  font-family: 'Abel', sans-serif;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.loginSuccess {
+  color: #155724;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+
+.loginError {
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+
 .forgotPassword {
   display: block;
   margin-top: 16px;

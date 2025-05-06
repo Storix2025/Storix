@@ -1,0 +1,17 @@
+.logoBox {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logoBox-img {
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+  }
+  
+  .logoText {
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: "ADLaMDisplay", sans-serif;
+  }

@@ -1,7 +1,57 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // <-- добавь это
 import styles from './Login.module.css';
 import logoIcon from '../../assets/image/logo-icon.png';
 
-export default function Login() {
+const Login = () => {
+  const navigate = useNavigate(); // <-- хук навигации
+
+  const [formData, setFormData] = useState({
+    username: '',
+    password: '',
+  });
+
+  const [message, setMessage] = useState('');
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!formData.username || !formData.password) {
+      setMessage('Введите имя пользователя и пароль.');
+      return;
+    }
+    console.log('Запрос отправлен');
+    try {
+      const response = await fetch('https://storix.onrender.com/api/token/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      // console.log('Ответ получен');
+      if (response.ok) {
+        const data = await response.json();
+        setMessage('Успешный вход!');
+        // console.log('Ответ сервера:', data);
+        
+        localStorage.setItem('token', data.access); // или data.token, в зависимости от ответа сервера
+        // Переход на другую страницу
+        navigate('/inventarization'); // замените на ваш путь
+      } else {
+        setMessage('Ошибка входа.');
+      }
+    } catch (error) {
+      console.error('Ошибка запроса:', error);
+      setMessage('Ошибка соединения с сервером.');
+    }
+  };
+
   return (
     <div className={styles.background}>
       <div className={styles.loginBox}>
@@ -9,9 +59,14 @@ export default function Login() {
           <img src={logoIcon} alt="Storix Logo" />
           <h1>Storix</h1>
         </div>
-        <form>
-          <input className={styles.inputTitle} type="email" placeholder="Эл. почта" required />
-          <input className={styles.inputTitle} type="password" placeholder="Пароль" required />
+        <form onSubmit={handleSubmit}>
+          {message && (
+            <div className={`${styles.loginMessage} ${message.includes('успеш') ? styles.loginSuccess : styles.loginError}`}>
+              {message}
+            </div>
+          )}
+          <input className={styles.inputTitle} type="text" name="username" placeholder="Логин" value={formData.username} onChange={handleChange} required />
+          <input className={styles.inputTitle} type="password" name="password" placeholder="Пароль" value={formData.password} onChange={handleChange} required />
           <button className={styles.buttonTitle} type="submit">Войти</button>
         </form>
         <a href="#" className={styles.forgotPassword}>Забыли пароль?</a>
@@ -19,3 +74,5 @@ export default function Login() {
     </div>
   );
 }
+
+export default Login;

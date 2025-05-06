@@ -1,0 +1,295 @@
+/* Основные стили для контейнера */
+.store-container {
+  display: flex;
+  min-height: 200vh;
+}
+
+/* Стили для боковой панели */
+.sidebar {
+  width: 350px;
+  background-color: rgba(12, 96, 165, 1);
+  color: white;
+  padding: 20px 0;
+  min-height: 200vh;
+  position: fixed; /* Фиксируем позицию */
+}
+
+.sidebar-header {
+  padding: 0 20px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-logo {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 0;
+  margin-left: 25px;
+  margin-bottom: 50px;
+}
+
+.sidebar-nav {
+  padding: 20px 0;
+}
+
+.sidebar-link {
+  display: block;
+  padding: 12px 20px;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  font-size: 24px;
+}
+
+.sidebar-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-link.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-left: 4px solid white;
+}
+
+/* Основное содержимое */
+.main-content {
+  margin-left: 350px; /* Отступ равный ширине sidebar */
+  max-width: calc(100% - 350px); /* Ограничиваем ширину */
+  flex: 1;
+  padding: 40px;
+  background-color: #f9fafb;
+}
+
+/* Остальные стили (оставлены без изменений) */
+.store-header {
+  display: flex;
+  padding: 15px;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.store-header-logo {
+  font-family: "ADLaM";
+  font-weight: 400;
+  font-size: 30px;
+  /* line-height: 100%; */
+  letter-spacing: 0%;
+  text-align: center;
+  color: #000000;
+  font-family: "ADLaMDisplay", sans-serif;
+}
+
+.store-invenariaztion-text {
+  font-family: "ADLaM";
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  /* text-align: center; */
+  color: #000000;
+  font-family: "ADLaMDisplay", sans-serif;
+  margin-top: 25px;
+  /* margin-right: 2180px; */
+  padding-left: 15px;
+}
+
+.store-header-user {
+  align-items: center;
+  display: flex;
+}
+
+.store-header-sobLogo {
+  margin-right: 20px;
+  color: #837d7d;
+  font-family: "ADLaMDisplay", sans-serif;
+}
+
+.store-video-container {
+  border-radius: 20px;
+  padding: 35px;
+  margin: 50px auto 0;
+  width: 977px;
+  height: auto;
+  background-color: #f5f5f5;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 50px;
+}
+
+.store-video-text {
+  margin-bottom: 35px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.store-video-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.drop-zone {
+  border: 2px dashed #999;
+  height: 350px;
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #fafafa;
+  transition: background-color 0.2s, border-color 0.2s;
+  color: rgba(131, 125, 125, 1);
+  font-size: 24px;
+  position: relative;
+}
+
+.drop-zone:hover {
+  background-color: #f0f0f0;
+  border-color: #666;
+}
+
+.drop-zone-text {
+  line-height: 1.5; 
+  margin-bottom: 20px;
+}
+
+.hidden-file-input {
+  display: none;
+}
+
+.upload-button {
+  background-color: #007bff;
+  color: white;
+  border-radius: 8px;
+  padding: 10px 18px;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 24px;
+  transition: background-color 0.2s;
+  text-align: center;
+}
+
+.upload-button:hover {
+  background-color: #0056b3;
+}
+
+.submit-button-wrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.store-video-preview {
+  display: block;
+  margin: 50px auto;
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.circle {
+  background-color: rgba(67, 154, 225, 1);
+  color: white;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin: 0 auto 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  /* margin-bottom: 30px; */
+  font-size: 32px;
+}
+
+/* .modal-backdrop {
+  background-color: transparent; 
+  position: static; 
+  margin-top: 40px;
+}
+
+.modal {
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 8px;
+} */
+
+.status-ok {
+  color: green;
+  font-weight: bold;
+}
+
+.status-error {
+  color: red;
+  font-weight: bold;
+}
+
+.modal-backdrop {
+  display: block !important;
+  background-color: transparent;
+  /* position: fixed; */
+  inset: 0;
+  z-index: 999;
+}
+
+.modal {
+  border-radius: 20px;
+  padding: 35px;
+  margin: 50px auto 0;
+  width: 977px;
+  height: auto;
+  background-color: #f5f5f5;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 50px;
+}
+.modal h2 { 
+  margin-top:0; 
+}
+
+.modal .close { 
+  position:absolute; 
+  top:16px; 
+  right:16px; 
+  font-size:24px; 
+  cursor:pointer; 
+}
+
+.modal table { 
+  font-family: "ADLaMDisplay", sans-serif;
+  font-weight: 400;
+  width:100%; 
+  border-collapse:collapse; 
+  margin-top:16px; 
+}
+
+.modal th, .modal td { 
+  /* font-family: "ADLaMDisplay", sans-serif; */
+  font-weight: 400;
+  font-size: 20px;
+  padding:12px; 
+  border-bottom:1px 
+  solid #e5e7eb; 
+  text-align:left; 
+}
+
+.modal th { 
+  font-family: "ADLaMDisplay", sans-serif;
+  background:#f9fafb; 
+  font-weight:400; 
+}
+
+.modal .status-ok { 
+  background:#d1fae5; 
+  color:#065f46; 
+  padding:4px 8px; 
+  border-radius:12px; 
+}
+
+.modal .status-diff { 
+  background:#fee2e2; 
+  color:#991b1b; 
+  padding:4px 8px; 
+  border-radius:12px; 
+}
