@@ -11,21 +11,27 @@ body {
   background-color: rgba(210, 223, 228, 1);
 }
 
+html, body {
+  height: auto;
+  min-height: 100%;
+}
+
 .storixContainer {
-  max-width: 1100px;
+  max-width: 900px;
   margin: 0 auto;
   font-family: 'Arial', sans-serif;
   background-color: rgba(210, 223, 228, 1);
   text-align: center;
+  margin-bottom: 40px;
 }
 
 .logoSection h1 {
-  font-size: 32px;
-  margin-bottom: 30px;
+  font-size: 26px;
+  margin-bottom: 20px;
 }
 
 .logoSection .subtitle {
-  font-size: 24px;
+  font-size: 18px;
   color: rgba(101, 108, 109, 1);
   margin-bottom: 30px;
   text-align: center;
@@ -35,8 +41,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 24px;
-  margin-bottom: 24px;
+  margin-top: 18px;
+  margin-bottom: 18px;
 }
 
 .logo img {
@@ -45,10 +51,14 @@ body {
 }
 
 .logo h4 {
-  font-size: 32px;
+  font-size: 26px;
   font-weight: 700;
   color: #000;
   font-family: 'ADLaMDisplay';
+}
+
+.logo h1 {
+  margin-bottom: 10px;
 }
 
 .accessCard {
@@ -56,45 +66,46 @@ body {
   border-radius: 15px;
   padding: 30px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-bottom: 40px;
 }
 
 .accessCard h2 {
-  font-size: 32px;
+  font-size: 26px;
 }
 
 .price {
   color:rgba(67, 154, 225, 1);
-  font-size: 32px;
+  font-size: 26px;
   font-weight: bold;
-  margin: 30px 0;
+  margin: 20px 0;
 }
 
 .paymentInfo {
-  font-size: 24px;
+  font-size: 18px;
   color: rgba(101, 108, 109, 1);
   margin-bottom: 30px;
 }
 
 .howItWorks {
-  font-size: 24px;
+  font-size: 18px;
   margin: 20px 0;
   text-align: center;
   background-color: rgba(210, 223, 228, 1);
   border-radius: 15px;
-  padding-bottom: 30px;
-  padding-top: 30px;
+  padding-bottom: 20px;
+  padding-top: 20px;
 }
 
 .howItWorks h3 {
-  font-size: 24px;
+  font-size: 18px;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .steps {
-  font-size: 24px;
+  font-size: 18px;
   display: flex;
-  gap: 50px;
+  gap: 10px;
   text-align: center;
   justify-content: center;
 }
@@ -104,13 +115,15 @@ body {
   max-width: 250px;
   flex-basis: 250px;
   word-wrap: break-word;
+  margin: 20px;
+  margin-bottom: 0px;
 }
 
 .circle {
   background-color: rgba(67, 154, 225, 1);
   color: white;
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   margin: 0 auto 5px;
   display: flex;
@@ -118,18 +131,18 @@ body {
   justify-content: center;
   font-weight: bold;
   margin-bottom: 30px;
-  font-size: 32px;
+  font-size: 26px;
 }
 
 .features {
-  font-size: 24px;
+  font-size: 18px;
   text-align: left;
   margin: 20px 0;
   padding-left: 20px;
 }
 
 .features li {
-  font-size: 24px;
+  font-size: 18px;
   margin-bottom: 8px;
   list-style: none;
   position: relative;
@@ -149,6 +162,6 @@ body {
   border: none;
   padding: 24px 48px;
   border-radius: 15px;
-  font-size: 32px;
+  font-size: 26px;
   cursor: pointer;
 }

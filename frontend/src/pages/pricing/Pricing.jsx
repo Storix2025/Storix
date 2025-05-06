@@ -10,7 +10,7 @@ export default function Pricing() {
           <h4>Storix</h4>
         </div>
 
-        <h1>AI-Анализ складских видео</h1>
+        <h1 className={styles.logo}>AI-Анализ складских видео</h1>
         <p className={styles.subtitle}>
           Просто снимите видео на телефон, загрузите в сервис и <br />получите автоматический учет товаров с точностью 99%
         </p>
@@ -20,7 +20,7 @@ export default function Pricing() {
         <h2>Полный доступ к сервису</h2>
         <p className={styles.price}>19 900₽</p>
         <p className={styles.paymentInfo}>
-          Единовразовый платеж. Без подписок и скрытых платежей. <br />
+          Единоразовый платеж. Без подписок и скрытых платежей. <br />
           Доступ навсегда с бесплатными обновлениями
         </p>
 

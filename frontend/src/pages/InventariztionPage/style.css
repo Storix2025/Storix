@@ -4,7 +4,7 @@
 }
 
 .sidebar {
-  width: 350px;
+  width: 250px;
   background-color: rgba(12, 96, 165, 1);
   color: white;
   padding: 20px 0;
@@ -18,11 +18,11 @@
 }
 
 .sidebar-logo {
-  font-size: 30px;
+  font-size: 24px;
   font-weight: bold;
   margin: 0;
   margin-left: 25px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .sidebar-nav {
@@ -35,7 +35,7 @@
   color: white;
   text-decoration: none;
   transition: background-color 0.3s;
-  font-size: 24px;
+  font-size: 18px;
 }
 
 .sidebar-link:hover {
@@ -48,8 +48,8 @@
 }
 
 .main-content {
-  margin-left: 350px; 
-  max-width: calc(100% - 350px); 
+  margin-left: 250px; 
+  max-width: calc(100% - 250px); 
   flex: 1;
   padding: 40px;
   background-color: #f9fafb;
@@ -62,13 +62,13 @@
   align-items: center;
   color: white;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 14px;
 }
 
 .store-header-logo {
   font-family: "ADLaM";
   font-weight: 400;
-  font-size: 30px;
+  font-size: 24px;
   letter-spacing: 0%;
   text-align: center;
   color: #000000;
@@ -78,7 +78,7 @@
 .store-invenariaztion-text {
   font-family: "ADLaM";
   font-weight: 400;
-  font-size: 30px;
+  font-size: 24px;
   line-height: 100%;
   letter-spacing: 0%;
   color: #000000;
@@ -93,6 +93,7 @@
 }
 
 .store-header-sobLogo {
+  font-size: 18px;
   margin-right: 20px;
   color: #837d7d;
   font-family: "ADLaMDisplay", sans-serif;
@@ -102,7 +103,7 @@
   border-radius: 20px;
   padding: 35px;
   margin: 50px auto 0;
-  width: 977px;
+  width: 800px;
   height: auto;
   background-color: #f5f5f5;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -111,7 +112,7 @@
 
 .store-video-text {
   margin-bottom: 35px;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 500;
 }
 
@@ -122,8 +123,10 @@
 }
 
 .drop-zone {
+  display: grid;
+  place-items: center;
   border: 2px dashed #999;
-  height: 350px;
+  height: 250px;
   border-radius: 12px;
   padding: 40px;
   text-align: center;
@@ -131,7 +134,7 @@
   background-color: #fafafa;
   transition: background-color 0.2s, border-color 0.2s;
   color: rgba(131, 125, 125, 1);
-  font-size: 24px;
+  font-size: 18px;
   position: relative;
 }
 
@@ -141,6 +144,7 @@
 }
 
 .drop-zone-text {
+  align-items: center;
   line-height: 1.5; 
   margin-bottom: 20px;
 }
@@ -156,7 +160,7 @@
   padding: 10px 18px;
   display: inline-block;
   cursor: pointer;
-  font-size: 24px;
+  font-size: 18px;
   transition: background-color 0.2s;
   text-align: center;
 }
@@ -181,15 +185,15 @@
 .circle {
   background-color: rgba(67, 154, 225, 1);
   color: white;
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   margin: 0 auto 5px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  font-size: 32px;
+  font-size: 24px;
 }
 
 .status-ok {
@@ -227,7 +231,7 @@
   position:absolute; 
   top:16px; 
   right:16px; 
-  font-size:24px; 
+  font-size:18px; 
   cursor:pointer; 
 }
 
@@ -241,7 +245,7 @@
 
 .modal th, .modal td { 
   font-weight: 400;
-  font-size: 20px;
+  font-size: 14px;
   padding:12px; 
   border-bottom:1px 
   solid #e5e7eb; 

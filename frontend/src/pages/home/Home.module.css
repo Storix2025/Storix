@@ -7,8 +7,12 @@
 
 .container {
   height: 100vh;
-  width: 1900px;
+  max-width: 1500px;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
   color: white;
+  color: #fefefe; /* ярче, чем просто white */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -26,6 +30,7 @@
 }
 
 .header {
+  z-index: 9999;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -44,7 +49,7 @@
 }
 
 .logoText {
-  font-size: 50px;
+  font-size: 40px;
   font-weight: bold;
   font-family: "ADLaMDisplay", sans-serif;
 }
@@ -55,7 +60,7 @@
   background: transparent;
   border: 3px solid #60b1f5;
   color: white;
-  font-size: 30px;
+  font-size: 24px;
   border-radius: 20px;
   cursor: pointer;
   transition: 0.3s;
@@ -71,27 +76,28 @@
 }
 
 .main h1 {
-  font-size: 50px;
+  font-size: 40px;
   font-weight: bold;
   margin-bottom: 30px;
   font-family: sans-serif;
 }
 
 .subtext {
-  font-size: 30px;
+  font-size: 24px;
   margin-bottom: 36px;
   line-height: 1.4;
   font-family: sans-serif;
 }
 
 .ctaBtn {
-  width: 490px;
-  height: 100px;
+  z-index: 9999;
+  width: 390px;
+  height: 80px;
   background-color: #4da7f5;
   color: white;
-  font-size: 36px;
+  font-size: 28px;
   padding: 12px 28px;
-  margin-bottom: 200px;
+  margin-bottom: 100px;
   border-radius: 12px;
   border: none;
   cursor: pointer;
@@ -116,19 +122,19 @@
   border-radius: 15px;
   padding: 20px 30px;
   min-width: 150px;
-  font-size: 16px;
-  width: 320px;
-  height: 237px;
+  font-size: 12px;
+  width: 250px;
+  height: 200px;
 }
 
 .feature p {
-  font-size: 30px;
+  font-size: 24px;
   font-family: sans-serif;
 }
 
 .feature img {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   margin-bottom: 20px;
 }
 
@@ -136,3 +142,11 @@
  
   background-color: red;
 }
+
+.main h1,
+.subtext,
+.feature p {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+
