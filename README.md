@@ -41,8 +41,8 @@
 
 ## 2 аттестация
 ### Видео
-* Демонстрация MVP - выступление с презентацией ([YouTube]([https://www.youtube.com/watch?v=YokjylA8OQA](https://youtu.be/u_WH3QBmRPE)) / [Rutube]([https://rutube.ru/video/4a685653b0314d1b25847e8b6c0feb88/](https://rutube.ru/video/92b36944afd46ac5f58f26333e94d28c/)))
-* Демонстрация MVP - запись экрана ([YouTube]([[https://www.youtube.com/watch?v=YokjylA8OQA](https://youtu.be/u_WH3QBmRPE)](https://www.youtube.com/watch?v=hBhK7r0iOK0)) / [Rutube]([https://rutube.ru/video/4a685653b0314d1b25847e8b6c0feb88/](https://rutube.ru/video/04e8d949c9ae289e9ab80de76799f609/)))
+* Демонстрация MVP - выступление с презентацией ([YouTube](https://youtu.be/u_WH3QBmRPE) / [Rutube](https://rutube.ru/video/92b36944afd46ac5f58f26333e94d28c/))
+* Демонстрация MVP - запись экрана ([YouTube](https://www.youtube.com/watch?v=hBhK7r0iOK0) / [Rutube](https://rutube.ru/video/04e8d949c9ae289e9ab80de76799f609/))
 
 [Чек-лист]()
 
