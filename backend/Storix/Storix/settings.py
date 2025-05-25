@@ -17,7 +17,6 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
@@ -28,8 +27,6 @@ SECRET_KEY = '$)*39qc9dj8yb2$weoybmy7)^^jnk8rp7cw^7cf1d@xjdk3ioh'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
-
 
 # Application definition
 
@@ -80,22 +77,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Storix.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'newdb',
-        'USER': 'newuser',
-        'PASSWORD': '12345678',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(
+        default='postgres://postgres:postgres@localhost:5432/test_db'
+    )
 }
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -115,7 +104,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
@@ -127,7 +115,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 STATIC_ROOT = BASE_DIR / 'staticfiles'
@@ -138,7 +125,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -160,6 +146,3 @@ CORS_ALLOWED_ORIGINS = [
 AUTH_USER_MODEL = 'accounts.User'
 
 CORS_ALLOW_CREDENTIALS = True
-
-
-
