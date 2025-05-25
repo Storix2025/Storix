@@ -87,9 +87,9 @@ WSGI_APPLICATION = 'Storix.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'myproject',
-        'USER': 'niker',
-        'PASSWORD': 'Rocky123roc',
+        'NAME': 'newdb',
+        'USER': 'newuser',
+        'PASSWORD': '12345678',
         'HOST': 'localhost',
         'PORT': '5432',
     }
