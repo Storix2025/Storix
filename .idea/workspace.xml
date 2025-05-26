@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18c4233f-7fbc-4058-91d1-a1138a66f1e3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/Storix/Storix/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Storix/Storix/settings.py" afterDir="false" />
-    </list>
+    <list default="true" id="18c4233f-7fbc-4058-91d1-a1138a66f1e3" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -101,7 +96,7 @@
       <updated>1746363047551</updated>
       <workItem from="1746363048696" duration="1137000" />
       <workItem from="1746371027331" duration="61000" />
-      <workItem from="1748188359570" duration="6131000" />
+      <workItem from="1748188359570" duration="6669000" />
     </task>
     <servers />
   </component>
