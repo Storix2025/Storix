@@ -81,9 +81,14 @@ WSGI_APPLICATION = 'Storix.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgres://postgres:postgres@localhost:5432/test_db'
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'newdb',
+        'USER': 'newuser',
+        'PASSWORD': '12345678',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
 }
 
 # Password validation

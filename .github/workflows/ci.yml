@@ -17,7 +17,7 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: test_db
-        ports: ["5432:5432"]
+        ports: [ "5432:5432" ]
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -44,7 +44,7 @@ jobs:
 
       - name: Configure DATABASE_URL
         run: echo "DATABASE_URL=postgres://postgres:postgres@localhost:5432/test_db?sslmode=disable" >> $GITHUB_ENV
-      
+
       - name: Set Django SECRET_KEY and DEBUG
         run: |
           echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" >> $GITHUB_ENV
@@ -60,9 +60,34 @@ jobs:
       - name: Run tests with coverage
         working-directory: backend/Storix
         run: |
-              coverage run --source=accounts,inventory,Storix manage.py test accounts.tests inventory.tests --verbosity=2
-              coverage xml -o coverage.xml
-              coverage report
+          coverage run --source=accounts,inventory,Storix manage.py test accounts.tests inventory.tests --verbosity=2
+          coverage xml -o coverage.xml
+          coverage report
 
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
+
+      - name: Deploy to server
+        run: |
+          ssh -i ~/.ssh/id_ed25519 ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
+            cd /home/ubuntu/Storix/backend/Storix || exit 1
+            git pull origin main
+            source venv/bin/activate
+            pip install -r backend/Storix/requirements.txt
+            python backend/Storix/manage.py migrate --noinput
+            python backend/Storix/manage.py collectstatic --noinput
+            sudo systemctl restart gunicorn
+            sudo systemctl reload nginx
+          EOF
