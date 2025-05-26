@@ -4,6 +4,8 @@ import Logo from "../Logo";
 import "./style.css";
 
 export default function NavBar() {
+  // const token = localStorage.getItem("token");
+
   return (
     <div className="navBar">
         <div className="navBar-logo">

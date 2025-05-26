@@ -27,7 +27,7 @@ const Login = () => {
     }
     console.log('Запрос отправлен');
     try {
-      const response = await fetch('https://storix.onrender.com/api/token/', {
+      const response = await fetch('https://backend-storix.store/api/token/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -36,6 +36,7 @@ const Login = () => {
       });
       if (response.ok) {
         const data = await response.json();
+        console.log('Вход усешен');
         setMessage('Успешный вход!');
         
         localStorage.setItem('token', data.access);
@@ -67,7 +68,7 @@ const Login = () => {
           <input className={styles.inputTitle} type="password" name="password" placeholder="Пароль" value={formData.password} onChange={handleChange} required />
           <button className={styles.buttonTitle} type="submit">Войти</button>
         </form>
-        <a href="#" className={styles.forgotPassword}>Забыли пароль?</a>
+        {/* <a href="#" className={styles.forgotPassword}>Забыли пароль?</a> */}
       </div>
     </div>
   );

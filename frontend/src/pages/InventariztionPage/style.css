@@ -196,18 +196,8 @@
   font-size: 24px;
 }
 
-.status-ok {
-  color: green;
-  font-weight: bold;
-}
-
-.status-error {
-  color: red;
-  font-weight: bold;
-}
-
 .modal-backdrop {
-  display: block !important;
+  /* display: block !important; */
   background-color: transparent;
   inset: 0;
   z-index: 999;
@@ -246,10 +236,23 @@
 .modal th, .modal td { 
   font-weight: 400;
   font-size: 14px;
-  padding:12px; 
+  padding: 16px 12px;; 
   border-bottom:1px 
   solid #e5e7eb; 
   text-align:left; 
+}
+
+.modal td {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  vertical-align: middle;
+}
+
+.status-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
 }
 
 .modal th { 
@@ -260,14 +263,122 @@
 
 .modal .status-ok { 
   background:#d1fae5; 
-  color:#065f46; 
-  padding:4px 8px; 
-  border-radius:12px; 
+  color:#065f46;  
 }
 
-.modal .status-diff { 
-  background:#fee2e2; 
+.modal .status-diff 
+.modal .status-error { 
+  background:#791c27; 
   color:#991b1b; 
-  padding:4px 8px; 
-  border-radius:12px; 
+}
+
+.modal .status-ok,
+.modal .status-error,
+.modal .status-diff {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 12px;
+}
+
+.status-ok {
+  color: green;
+  font-weight: bold;
+}
+
+.status-error {
+  background:#f7d7dc; 
+  color: #991b1b; 
+  font-weight: bold;
+}
+
+.status-wrapper {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+
+@media (max-width: 1024px) {
+  .main-content {
+    padding: 20px;
+  }
+
+  .store-video-container {
+    width: 100%;
+    padding: 20px;
+    margin-top: 20px;
+  }
+
+  .modal {
+    width: 90%;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+
+  .main-content {
+    margin-left: 0;
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  .store-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .store-header-user {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .drop-zone {
+    height: 200px;
+    padding: 20px;
+    font-size: 16px;
+  }
+
+  .upload-button {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+  }
+
+  .store-video-preview {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .modal table,
+  .modal th,
+  .modal td {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .modal .close {
+    top: 10px;
+    right: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .store-header-logo {
+    font-size: 20px;
+  }
+
+  .circle {
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+  }
+
+  .store-invenariaztion-text {
+    font-size: 20px;
+  }
 }

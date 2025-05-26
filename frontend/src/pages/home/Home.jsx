@@ -1,7 +1,7 @@
 import styles from "./Home.module.css";
-import alarmClock from "../../assets/image/alarm-clock.png";
-import bell from "../../assets/image/bell.png";
-import checkMark from "../../assets/image/grayCheckMark.png";
+// import alarmClock from "../../assets/image/alarm-clock.png";
+// import bell from "../../assets/image/bell.png";
+// import checkMark from "../../assets/image/grayCheckMark.png";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../components/Logo";
 
@@ -34,7 +34,7 @@ export default function Home() {
             Узнать больше
           </button>
 
-          <div className={styles.features}>
+          {/* <div className={styles.features}>
             <div className={styles.feature}>
               <img src={alarmClock} alt="alarmClock" />
               <p>Анализ за 5 минут</p>
@@ -50,7 +50,7 @@ export default function Home() {
                 расхождениях
               </p>
             </div>
-          </div>
+          </div> */}
         </main>
       </div>
     </div>
