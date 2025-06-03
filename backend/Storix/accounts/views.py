@@ -1,5 +1,6 @@
 from rest_framework import viewsets, permissions
-from rest_framework.decorators import api_view, permission_classes
+from rest_framework.exceptions import PermissionDenied
+from rest_framework.decorators import api_view, permission_classes, action
 from rest_framework.response import Response
 from .models import User, Warehouse, Video, Report
 from .serializers import (
@@ -12,9 +13,11 @@ class IsSysAdmin(permissions.BasePermission):
     def has_permission(self, request, view):
         return bool(request.user.is_authenticated and request.user.role == User.ROLE_SYSADMIN)
 
+
 class IsAdmin(permissions.BasePermission):
     def has_permission(self, request, view):
         return bool(request.user.is_authenticated and request.user.role == User.ROLE_ADMIN)
+
 
 class IsWorker(permissions.BasePermission):
     def has_permission(self, request, view):
@@ -41,6 +44,19 @@ class UserViewSet(viewsets.ModelViewSet):
         else:
             serializer.save()
 
+    @action(detail=True, methods=['post'])
+    def set_password(self, request, pk=None):
+        user = self.get_object()
+        password = request.data.get('password')
+
+        if not password:
+            return Response({'error': 'Password required'}, status=400)
+
+        user.set_password(password)
+        user.save()
+        return Response({'status': 'password set'})
+
+
 class WarehouseViewSet(viewsets.ModelViewSet):
     queryset = Warehouse.objects.all()
     serializer_class = WarehouseSerializer
@@ -52,6 +68,7 @@ class WarehouseViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(admin=self.request.user)
 
+
 class VideoViewSet(viewsets.ModelViewSet):
     queryset = Video.objects.all()
     serializer_class = VideoSerializer
@@ -60,17 +77,25 @@ class VideoViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         user = self.request.user
         if user.role == User.ROLE_WORKER:
-            return self.queryset.filter(warehouse=user.warehouse)
+            return self.queryset.filter(warehouse__in=user.work_warehouses.all())
         if user.role == User.ROLE_ADMIN:
-            return self.queryset.filter(warehouse__admin=user)
+            # Явно собираем склады, где user = admin
+            warehouses = Warehouse.objects.filter(admin=user)
+            return self.queryset.filter(warehouse__in=warehouses)
         return self.queryset.none()
 
     def perform_create(self, serializer):
         user = self.request.user
+        warehouse = serializer.validated_data.get('warehouse')
+
+        # Для работника проверяем доступ к складу
         if user.role == User.ROLE_WORKER:
-            serializer.save(warehouse=user.warehouse, created_by=user)
+            if warehouse not in user.work_warehouses.all():
+                raise PermissionDenied("У вас нет доступа к этому складу")
+            serializer.save(created_by=user)
         else:
             serializer.save()
+
 
 class ReportViewSet(viewsets.ModelViewSet):
     queryset = Report.objects.all()
@@ -80,15 +105,23 @@ class ReportViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         user = self.request.user
         if user.role == User.ROLE_WORKER:
-            return self.queryset.filter(warehouse=user.warehouse)
+            # Используем work_warehouses для работника
+            return self.queryset.filter(warehouse__in=user.work_warehouses.all())
         if user.role == User.ROLE_ADMIN:
-            return self.queryset.filter(warehouse__admin=user)
+            warehouses = Warehouse.objects.filter(admin=user)
+            return self.queryset.filter(warehouse__in=warehouses)
+
         return self.queryset.none()
 
     def perform_create(self, serializer):
         user = self.request.user
+        warehouse = serializer.validated_data.get('warehouse')
+
+        # Для работника проверяем доступ к складу
         if user.role == User.ROLE_WORKER:
-            serializer.save(warehouse=user.warehouse, created_by=user)
+            if warehouse not in user.work_warehouses.all():
+                raise PermissionDenied("У вас нет доступа к этому складу")
+            serializer.save(created_by=user)
         else:
             serializer.save()
 
@@ -100,6 +133,7 @@ def sysadmin_dashboard(request):
     data = UserSerializer(admins, many=True).data
     return Response({'admins': data})
 
+
 @api_view(['GET'])
 @permission_classes([IsAdmin])
 def admin_dashboard(request):
@@ -108,18 +142,24 @@ def admin_dashboard(request):
     for wh in warehouses:
         result.append({
             'warehouse': WarehouseSerializer(wh).data,
-            'workers':   UserSerializer(wh.workers.all(), many=True).data,
-            'videos':    VideoSerializer(wh.videos.all(), many=True).data,
-            'reports':   ReportSerializer(wh.reports.all(), many=True).data,
+            'workers': UserSerializer(wh.workers.all(), many=True).data,
+            'videos': VideoSerializer(wh.videos.all(), many=True).data,
+            'reports': ReportSerializer(wh.reports.all(), many=True).data,
         })
     return Response({'warehouses': result})
+
 
 @api_view(['GET'])
 @permission_classes([IsWorker])
 def worker_dashboard(request):
-    wh = request.user.warehouse
-    return Response({
-        'warehouse': WarehouseSerializer(wh).data,
-        'videos':    VideoSerializer(wh.videos.all(), many=True).data,
-        'reports':   ReportSerializer(wh.reports.all(), many=True).data,
-    }) 
+    warehouses = request.user.work_warehouses.all()
+    result = []
+
+    for warehouse in warehouses:
+        result.append({
+            'warehouse': WarehouseSerializer(warehouse).data,
+            'videos': VideoSerializer(warehouse.videos.all(), many=True).data,
+            'reports': ReportSerializer(warehouse.reports.all(), many=True).data,
+        })
+
+    return Response({'warehouses': result})

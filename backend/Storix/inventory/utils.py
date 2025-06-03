@@ -1,8 +1,9 @@
 import cv2
 from pyzbar import pyzbar
 
+
 def analyze_video_fast(video_path: str, pairs: list) -> dict:
-    FRAME_SKIP   = 2
+    FRAME_SKIP = 2
     RESIZE_SCALE = 0.5
 
     cap = cv2.VideoCapture(video_path)
@@ -12,7 +13,6 @@ def analyze_video_fast(video_path: str, pairs: list) -> dict:
     seen_racks = set()
     matched_pairs = set()
     total_pairs = set((p["box"], p["rack"]) for p in pairs)
-
 
     current_locations = {}
 
@@ -35,7 +35,6 @@ def analyze_video_fast(video_path: str, pairs: list) -> dict:
         frame_boxes = set()
         frame_racks = set()
 
-
         for obj in decoded:
             data = obj.data.decode('utf-8')
             if data.startswith("BOX:"):
@@ -47,26 +46,21 @@ def analyze_video_fast(video_path: str, pairs: list) -> dict:
                 frame_racks.add(code)
                 seen_racks.add(code)
 
-
         if frame_racks:
             last_seen_rack = next(iter(frame_racks))
-
 
         for b in frame_boxes:
             if last_seen_rack is not None:
                 current_locations[b] = last_seen_rack
 
-
         for b, r in total_pairs:
             if b in frame_boxes and r in frame_racks:
                 matched_pairs.add((b, r))
-
 
         if matched_pairs == total_pairs:
             break
 
     cap.release()
-
 
     result_list = []
     all_ok = True

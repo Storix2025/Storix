@@ -8,14 +8,14 @@ from .views import (
 )
 
 router = DefaultRouter()
-router.register(r'users',      UserViewSet)
+router.register(r'users', UserViewSet)
 router.register(r'warehouses', WarehouseViewSet)
-router.register(r'videos',     VideoViewSet)
-router.register(r'reports',    ReportViewSet)
+router.register(r'videos', VideoViewSet)
+router.register(r'reports', ReportViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
     path('dashboard/sysadmin/', sysadmin_dashboard),
-    path('dashboard/admin/',     admin_dashboard),
-    path('dashboard/worker/',    worker_dashboard),
+    path('dashboard/admin/', admin_dashboard),
+    path('dashboard/worker/', worker_dashboard),
 ]

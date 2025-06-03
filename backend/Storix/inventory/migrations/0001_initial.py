@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -21,9 +20,12 @@ class Migration(migrations.Migration):
                 ('video', models.FileField(upload_to='inventory/videos/')),
                 ('config', models.JSONField()),
                 ('result', models.JSONField(blank=True, null=True)),
-                ('status', models.CharField(choices=[('pending', 'Pending'), ('done', 'Done')], default='pending', max_length=20)),
+                ('status', models.CharField(choices=[('pending', 'Pending'), ('done', 'Done')], default='pending',
+                                            max_length=20)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('worker', models.ForeignKey(limit_choices_to={'role': 'worker'}, on_delete=django.db.models.deletion.CASCADE, related_name='inventory_reports', to=settings.AUTH_USER_MODEL)),
+                ('worker',
+                 models.ForeignKey(limit_choices_to={'role': 'worker'}, on_delete=django.db.models.deletion.CASCADE,
+                                   related_name='inventory_reports', to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]
