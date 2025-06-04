@@ -18,9 +18,13 @@
 [storix.tech](https://storix.tech/)<br>
 
 Аккаунт для теста:
-| Логин  | Пароль         |
-|--------|----------------|
-| Worker | Rocky123roc    |
+|  Роль                  | Логин  | Пароль         |
+|------------------------|--------|----------------|
+|Рабочий                 | Worker | Rocky123roc    |
+|------------------------|--------|----------------|
+|Администратор           | Company| Rocky123roc    |
+|------------------------|--------|----------------|
+|Системный администратор | niker  | Rocky123roc    |
 
 Тестовые видео и JSON: [google docs](https://drive.google.com/drive/folders/1macaUzhxdB-0uYLzGM2tcep7eUxXVZw6?usp=drive_link)
 
