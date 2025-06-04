@@ -10,6 +10,7 @@ from .models import InventoryReport
 from .serializers import InventoryReportSerializer
 from .utils import analyze_video_fast
 
+
 class InventoryReportViewSet(viewsets.ModelViewSet):
     queryset = InventoryReport.objects.all()
     serializer_class = InventoryReportSerializer
@@ -38,7 +39,6 @@ class InventoryReportViewSet(viewsets.ModelViewSet):
                 except Exception:
                     config_data = {}
 
-
         video_file = self.request.FILES.get('video')
         serializer.save(
             worker=self.request.user,
@@ -52,7 +52,6 @@ class InventoryReportViewSet(viewsets.ModelViewSet):
         if report.status != 'pending':
             return Response({'detail': 'Анализ уже выполнен'},
                             status=status.HTTP_400_BAD_REQUEST)
-
 
         video_path = default_storage.path(report.video.name)
 

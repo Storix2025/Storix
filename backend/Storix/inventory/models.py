@@ -1,17 +1,18 @@
 from django.db import models
 from django.conf import settings
 
+
 class InventoryReport(models.Model):
-    worker     = models.ForeignKey(
+    worker = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         limit_choices_to={'role': 'worker'},
         related_name='inventory_reports'
     )
-    video      = models.FileField(upload_to='inventory/videos/')
-    config     = models.JSONField()
-    result     = models.JSONField(null=True, blank=True)
-    status     = models.CharField(
+    video = models.FileField(upload_to='inventory/videos/')
+    config = models.JSONField()
+    result = models.JSONField(null=True, blank=True)
+    status = models.CharField(
         max_length=20,
         choices=[('pending', 'Pending'), ('done', 'Done')],
         default='pending'
