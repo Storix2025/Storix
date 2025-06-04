@@ -33,6 +33,7 @@
 * Презентация ([pptx](https://github.com/Storix2025/Storix/blob/main/Documentation/presentation/%D0%A2%D0%9F.pptx) / [pdf](https://github.com/Storix2025/Storix/blob/main/Documentation/presentation/%D0%A2%D0%9F.pdf))
 * PM отчёт и отчёт тестирования ([docx](https://github.com/Storix2025/Storix/blob/main/Documentation/PM%20report%20and%20testing%20report%20-%202%20certification/PM%20%D0%BE%D1%82%D1%87%D1%91%D1%82%20%D0%B8%20%D0%BE%D1%82%D1%87%D1%91%D1%82%20%D1%82%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F.docx) / [pdf](https://github.com/Storix2025/Storix/blob/main/Documentation/PM%20report%20and%20testing%20report%20-%202%20certification/PM%20%D0%BE%D1%82%D1%87%D1%91%D1%82%20%D0%B8%20%D0%BE%D1%82%D1%87%D1%91%D1%82%20%D1%82%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F.pdf))
 * Курсовая работа ([docx](https://github.com/Storix2025/Storix/blob/main/Documentation/%D0%A1ourse%20work/%D0%9A%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0.docx) / [pdf](https://github.com/Storix2025/Storix/blob/main/Documentation/%D0%A1ourse%20work/%D0%9A%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0.pdf))
+* Презентация защиты ([docs.google](https://docs.google.com/presentation/d/1gYUp-EaZzklZpPdNDXY2hV5QNWjU67JKjfR7FwGA_Qw/edit?pli=1&slide=id.g3614183fab4_5_35#slide=id.g3614183fab4_5_35))
 
 ### Дизайн
 * [Figma](https://www.figma.com/design/dXNYv1bQIhNE9iapW1z8BV/Untitled?node-id=0-1&p=f&t=YMsVakuGGHrCOmYX-0)
