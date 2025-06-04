@@ -1,0 +1,24 @@
+.sysadmin-profile-page__main-container {
+  display: flex;
+  justify-content: center;
+}
+
+.sysadmin-profile-page__info {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: white;
+  width: 80%;
+  border-radius: 20px;
+}
+
+.sysadmin-profile-page__info-text {
+  font-size: 24px;
+  margin-left: 20px;
+}
+
+.sysadmin-profile-page__info-container {
+  display: flex;
+}

@@ -1,0 +1,64 @@
+.company-profile-page__main-container {
+  display: flex;
+  justify-content: center;
+}
+
+.company-profile-page__company-info {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: white;
+  width: 80%;
+  border-radius: 20px;
+}
+
+.company-profile-page__company-info-text {
+  font-size: 24px;
+  margin-left: 20px;
+}
+
+.company-profile-page__company-info-container {
+  display: flex;
+}
+
+.company-profile-page__company-info-button {
+    position: absolute;
+    bottom: 20px;
+    left: 290px;
+    background: white;
+    color: #222;
+    border: 2px solid #4da7f5;
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+
+.main-content-worker {
+  flex: 1;
+  padding: 40px;
+}
+
+.users-container__worker {
+  border-radius: 20px;
+  padding: 35px;
+  margin: 50px auto 0;
+  height: auto;
+  background-color: #f5f5f5;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 50px;
+  text-align: left; 
+}
+
+.users-container__worker p {
+  margin-bottom: 15px;
+}
+
+.modal h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+}

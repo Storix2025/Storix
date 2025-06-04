@@ -1,0 +1,40 @@
+.card {
+  width: 320px;
+  height: 150px;
+  min-height: 100px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.card__info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #000;
+}
+
+.card__status {
+  width: 115px;
+  height: 40px;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  
+}
+
+.card__status_pending {
+    background-color: #F1C7C7;
+    color: #DF4949;
+}
+
+.card__status_done {
+    background-color: #C9E9CC;
+    color: #4DB454;
+}
+
+

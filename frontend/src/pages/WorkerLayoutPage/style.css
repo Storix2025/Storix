@@ -1,0 +1,8 @@
+.worker-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.worker-layout__container {
+  width: 100%;
+}

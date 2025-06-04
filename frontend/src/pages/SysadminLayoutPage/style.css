@@ -1,0 +1,8 @@
+.sysadmin-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sysadmin-layout__container {
+  width: 100%;
+}

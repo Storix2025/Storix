@@ -1,0 +1,28 @@
+
+
+html, body {
+  height: 100%;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.history-check-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.history-check-page__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  justify-items: center;
+}

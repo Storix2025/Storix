@@ -1,0 +1,200 @@
+.sidebar {
+  width: 250px;
+  background-color: rgba(12, 96, 165, 1);
+  color: white;
+  padding: 20px 0;
+  min-height: 200vh;
+  position: fixed;
+}
+
+.sidebar-header {
+  padding: 0 20px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-logo {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  margin-left: 25px;
+  margin-bottom: 30px;
+}
+
+.sidebar-nav {
+  padding: 20px 0;
+}
+
+.sidebar-link {
+  display: block;
+  padding: 12px 20px;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  font-size: 18px;
+}
+
+.sidebar-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-link.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-left: 4px solid white;
+}
+
+.main-content-users {
+  flex: 1;
+  padding: 40px;
+  background-color: #f9fafb;
+}
+
+.store-header {
+  display: flex;
+  padding: 15px;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.store-header-logo {
+  font-family: "ADLaM";
+  font-weight: 400;
+  font-size: 24px;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #000000;
+  font-family: "ADLaMDisplay", sans-serif;
+}
+
+.store-header-user {
+  align-items: center;
+  display: flex;
+}
+
+.store-header-sobLogo {
+  font-size: 18px;
+  margin-right: 20px;
+  color: #837d7d;
+  font-family: "ADLaMDisplay", sans-serif;
+}
+
+.circle {
+  background-color: rgba(67, 154, 225, 1);
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin: 0 auto 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.users-list-page {
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.users-list-page__list {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.users-list-page__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 90px;
+  padding: 30px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.card-link {
+  display: block;
+  max-width: 320px;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+  margin: 0 auto;
+}
+
+.floating-buttons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+  z-index: 1000;
+}
+
+.deleteButton {
+  background-color: #cc3535;
+  color: white;
+  width: 200px;
+  height: 50px;
+  border-radius: 25px;
+  margin: 0 auto 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 24px;
+  text-decoration: none;
+
+  font-size: 18px;
+
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.deleteButton:hover {
+  background-color: #c53333; 
+  transform: scale(1.1); 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.addButton {
+  background-color: rgba(67, 154, 225, 1);
+  color: white;
+  width: 200px;
+  height: 50px;
+  border-radius: 25px;
+  margin: 0 auto 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 24px;
+  text-decoration: none;
+
+  font-size: 18px;
+
+  position: fixed;
+  right: 20px;
+  z-index: 1000;
+  transition: all 0.3s ease; 
+}
+
+.addButtonWorker {
+  bottom: 90px;
+}
+
+.addButtonCompany {
+  bottom: 20px;
+}
+
+.addButton:hover {
+  background-color: rgb(70, 152, 219);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}

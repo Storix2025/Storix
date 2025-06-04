@@ -1,17 +1,21 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styles from './Login.module.css';
-import logoIcon from '../../assets/image/logo-icon.png';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styles from "./Login.module.css";
+import logoIcon from "../../assets/image/logo-icon.png";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../redux/reducers/appSlice";
+import axiosClient from "../../api/axiosClient";
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
-    username: '',
-    password: '',
+    username: "",
+    password: "",
   });
 
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,32 +26,40 @@ const Login = () => {
     e.preventDefault();
 
     if (!formData.username || !formData.password) {
-      setMessage('Введите имя пользователя и пароль.');
+      setMessage("Введите имя пользователя и пароль.");
       return;
     }
-    console.log('Запрос отправлен');
+    console.log("Запрос отправлен");
+
     try {
-      const response = await fetch('https://backend-storix.store/api/token/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-      if (response.ok) {
-        const data = await response.json();
-        console.log('Вход усешен');
-        setMessage('Успешный вход!');
-        
-        localStorage.setItem('token', data.access);
-      
-        navigate('/inventarization'); 
+      const response = await axiosClient.post("/token/", formData);
+      const token = response.data;
+
+      localStorage.setItem("token", token.access);
+      localStorage.setItem("refresh_token", token.refresh);
+
+      const userData = await axiosClient.get("/users/");
+      const userDataJson = userData.data;
+      const user = userDataJson.find((el) => el.username === formData.username);
+
+      if (user) {
+        dispatch(setUser(user));
+        sessionStorage.setItem("user", JSON.stringify(user));
+        console.log(user);
+        if (user.role === "worker") {
+          navigate("/worker-layout/inventarization");
+        } else if (user.role === "admin") {
+          navigate("/admin-layout/workers");
+        } else {
+          navigate("/sysadmin-layout/companies");
+        }
+        setMessage("Успешный вход!");
       } else {
-        setMessage('Ошибка входа.');
+        setMessage("Ошибка входа.");
       }
     } catch (error) {
-      console.error('Ошибка запроса:', error);
-      setMessage('Ошибка соединения с сервером.');
+      console.error("Ошибка запроса:", error);
+      setMessage("Ошибка соединения с сервером.");
     }
   };
 
@@ -60,18 +72,41 @@ const Login = () => {
         </div>
         <form onSubmit={handleSubmit}>
           {message && (
-            <div className={`${styles.loginMessage} ${message.includes('успеш') ? styles.loginSuccess : styles.loginError}`}>
+            <div
+              className={`${styles.loginMessage} ${
+                message.includes("успеш")
+                  ? styles.loginSuccess
+                  : styles.loginError
+              }`}
+            >
               {message}
             </div>
           )}
-          <input className={styles.inputTitle} type="text" name="username" placeholder="Логин" value={formData.username} onChange={handleChange} required />
-          <input className={styles.inputTitle} type="password" name="password" placeholder="Пароль" value={formData.password} onChange={handleChange} required />
-          <button className={styles.buttonTitle} type="submit">Войти</button>
+          <input
+            className={styles.inputTitle}
+            type="text"
+            name="username"
+            placeholder="Логин"
+            value={formData.username}
+            onChange={handleChange}
+            required
+          />
+          <input
+            className={styles.inputTitle}
+            type="password"
+            name="password"
+            placeholder="Пароль"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+          <button className={styles.buttonTitle} type="submit">
+            Войти
+          </button>
         </form>
-        {/* <a href="#" className={styles.forgotPassword}>Забыли пароль?</a> */}
       </div>
     </div>
   );
-}
+};
 
 export default Login;

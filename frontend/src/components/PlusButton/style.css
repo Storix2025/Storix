@@ -17,5 +17,13 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 1000; /* чтобы не перекрывалась другими элементами */
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.plusButton:hover {
+  background-color: rgb(70, 152, 219);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 }
