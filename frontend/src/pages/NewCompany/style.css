@@ -1,0 +1,171 @@
+@font-face {
+  font-family: 'AbhayaLibre';
+  src: url('../../assets/fonts/AbhayaLibre-ExtraBold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ADLaMDisplay';
+  src: url('../../assets/fonts/ADLaMDisplay-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Abel';
+  src: url('../../assets/fonts/Abel-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NotoSans';
+  src: url('../../assets/fonts/NotoSansAdlamUnjoined-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body, html {
+  height: 100%;
+}
+
+.background {
+
+  position: relative;
+  height: 80vh;
+  display: flex;
+  align-items: center;     
+  justify-content: center; 
+  overflow: hidden;
+}
+
+.loginBox {
+  position: relative;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  width: 500px;
+  text-align: left;
+}
+
+.loginBox h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.inputTitle {
+  font-family: 'NotoSans', sans-serif;
+  font-size: 18px;
+}
+
+.inputText {
+  font-family: 'NotoSans', sans-serif;
+  font-size: 18px;
+}
+
+.buttonTitle {
+  font-family: 'AbhayaLibre', sans-serif;
+  font-size: 18px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.logo img {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.logo h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #000;
+  font-family: 'ADLaMDisplay';
+}
+
+form input {
+  width: 100%;
+  padding: 12px 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 18px;
+}
+
+form button {
+  width: 100%;
+  background-color: #349ef3;
+  color: white;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #2387d8;
+}
+
+.loginMessage {
+  margin-top: 16px;
+  font-size: 16px;
+  font-family: 'Abel', sans-serif;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.loginSuccess {
+  color: #155724;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+
+.loginError {
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+
+.forgotPassword {
+  display: block;
+  margin-top: 16px;
+  color: #888;
+  font-family: 'Abel', sans-serif;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.forgotPassword:hover {
+  text-decoration: underline;
+}
+
+.inputText p {
+  text-align: left;
+}
+
+form select.inputTitle {
+  width: 100%;
+  padding: 12px 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 18px;
+  background-color: #fff;
+  font-family: 'NotoSans', sans-serif;
+}

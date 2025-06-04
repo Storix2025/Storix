@@ -22,7 +22,29 @@ html, body {
   font-family: 'Arial', sans-serif;
   background-color: rgba(210, 223, 228, 1);
   text-align: center;
-  margin-bottom: 40px;
+}
+
+.loginBtnWrapper {
+  position: absolute;
+  top: 30px;
+  left: 50px;
+  z-index: 10;
+}
+
+.loginBtn {
+  width: 150px;
+  height: 45px;
+  background: transparent;
+  border: 3px solid #60b1f5;
+  color: #000;
+  font-size: 24px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.loginBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .logoSection h1 {
@@ -164,4 +186,91 @@ html, body {
   border-radius: 15px;
   font-size: 26px;
   cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+  .storixContainer {
+    padding: 0 16px;
+  }
+
+  .logo {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .logo img {
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
+
+  .logo h4 {
+    font-size: 22px;
+  }
+
+  .logoSection h1 {
+    font-size: 22px;
+    padding: 0 10px;
+  }
+
+  .logoSection .subtitle {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .accessCard {
+    padding: 20px;
+  }
+
+  .accessCard h2 {
+    font-size: 22px;
+  }
+
+  .price {
+    font-size: 24px;
+  }
+
+  .paymentInfo {
+    font-size: 16px;
+  }
+
+  .howItWorks {
+    padding: 16px 10px;
+  }
+
+  .howItWorks h3 {
+    font-size: 16px;
+  }
+
+  .steps {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .step {
+    margin: 0 auto;
+    flex-basis: 0px;
+  }
+
+  .circle {
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+  }
+
+  .features {
+    font-size: 16px;
+    padding-left: 10px;
+  }
+
+  .features li {
+    font-size: 16px;
+  }
+
+  .accessButton {
+    font-size: 20px;
+    padding: 18px 32px;
+    width: 100%;
+  }
 }

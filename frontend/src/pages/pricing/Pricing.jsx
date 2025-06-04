@@ -1,18 +1,34 @@
 import styles from './Pricing.module.css';
 import logoIcon from '../../assets/image/logo-icon.png';
+import { useNavigate } from "react-router-dom";
 
 export default function Pricing() {
+  const navigate = useNavigate();
+
+  function sayPaymentMade() {
+    alert("Оплата произведена");
+  }
+
   return (
     <div className={styles.storixContainer}>
       <div className={styles.logoSection}>
+        <div className={styles.loginBtnWrapper}>
+          <button
+            className={styles.loginBtn}
+            onClick={() => navigate("/")}
+          >
+            Вернуться
+          </button>
+        </div>
         <div className={styles.logo}>
           <img src={logoIcon} alt="Storix Logo" />
           <h4>Storix</h4>
         </div>
 
-        <h1 className={styles.logo}>AI-Анализ складских видео</h1>
+
+        <h1 className={styles.logo}>Анализ складских видео</h1>
         <p className={styles.subtitle}>
-          Просто снимите видео на телефон, загрузите в сервис и <br />получите автоматический учет товаров с точностью 99%
+          Просто снимите видео на телефон, загрузите в сервис и <br />получите автоматический учет товаров
         </p>
       </div>
 
@@ -44,14 +60,12 @@ export default function Pricing() {
 
         <ul className={styles.features}>
           <li>Не требуется установка камер — используйте обычный смартфон</li>
-          <li>Точность распознавания товаров — 99%</li>
           <li>Мгновенное уведомление о расходованиях</li>
-          <li>Экспорт данных Excel/Google Sheets</li>
           <li>Безлимитное количество видео и отчетов</li>
           <li>Поддержка 24/7</li>
         </ul>
 
-        <button className={styles.accessButton}>Получить доступ</button>
+        <button className={styles.accessButton} onClick={sayPaymentMade}>Получить доступ</button>
       </div>
     </div>
   );

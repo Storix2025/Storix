@@ -1,0 +1,26 @@
+.navBar {
+    width: 312px;
+    background-color: #0C60A5;
+}
+
+.navBar-links {
+    margin-top: 50px;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    padding-left: 25px;
+    height: 50px;
+    color: white;
+    text-decoration: none;
+}
+
+.active {
+    background-color: rgba(255, 255, 255, 0.3); 
+}
+
+.navBar-logo {
+    padding: 15px;
+}
+

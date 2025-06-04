@@ -12,10 +12,9 @@
   padding: 0 20px;
   box-sizing: border-box;
   color: white;
-  color: #fefefe; /* ярче, чем просто white */
+  color: #fefefe;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 .background {
@@ -35,6 +34,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 30px 50px;
+  margin-bottom: 250px;
 }
 
 .logoBox {
@@ -72,7 +72,6 @@
 
 .main {
   text-align: center;
-  margin-top: -80px;
 }
 
 .main h1 {
@@ -150,3 +149,60 @@
 }
 
 
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    padding: 20px;
+    margin-bottom: 100px;
+  }
+
+  .loginBtn {
+    width: 140px;
+    height: 44px;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+
+  .main h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  .subtext {
+    font-size: 18px;
+    margin-bottom: 28px;
+  }
+
+  .ctaBtn {
+    width: 280px;
+    height: 60px;
+    font-size: 20px;
+    margin-bottom: 60px;
+  }
+
+  .features {
+    flex-direction: column;
+    gap: 40px;
+    padding: 20px;
+  }
+
+  .feature {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+  }
+
+  .feature img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .feature p {
+    font-size: 20px;
+  }
+
+  .logoText {
+    font-size: 28px;
+    text-align: center;
+  }
+}

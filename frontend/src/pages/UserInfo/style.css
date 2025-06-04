@@ -1,0 +1,36 @@
+.store-container__user-info {
+  display: flex;
+}
+
+.circle {
+  background-color: rgba(67, 154, 225, 1);
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin: 0 auto 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.main-content-worker {
+  padding: 40px;
+}
+
+.users-container__worker {
+  border-radius: 20px;
+  padding: 35px;
+  margin: 50px auto 0;
+  height: auto;
+  background-color: #f5f5f5;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 50px;
+  text-align: left; 
+}
+
+.users-container__worker p {
+  margin-bottom: 15px;
+}
